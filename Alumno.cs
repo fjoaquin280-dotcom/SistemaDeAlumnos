@@ -4,8 +4,12 @@ using System.Text;
 
 namespace SistemaDeAlumnos
 {
-    public class Alumno : Persona
+    public class Alumno : Persona, IExportable
     {
+        public string ExportarLinea()
+        {
+            return $"ALUMNO;{Legajo};{Nombre};{Promedio()}";
+        }
         public double Nota1 { get; private set; }
         public double Nota2 { get; private set; }
 

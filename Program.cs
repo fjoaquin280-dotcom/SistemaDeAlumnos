@@ -159,20 +159,22 @@ do
 
 } while (opcion != 6);
 
-List<Persona> personas = new List<Persona>();
+List<IExportable> exportables = new List<IExportable>();
 
-Alumno alumno = new Alumno("Ana Perez", 1234);
-alumno.CargarNotas(8, 9);
+Alumno alumnoExport = new Alumno("Ana Pérez", 1234);
+alumnoExport.CargarNotas(7, 7);
 
-Profesor profesor = new Profesor("Marta Diaz", 5678, "Programacion");
+Profesor profesorExport = new Profesor("Marta Díaz", 5678, "Programación");
 
-Preceptor preceptor = new Preceptor("Carlos Gomez", 9999);
+Materia materia1 = new Materia("PROG1", "Programación I", 128);
+Materia materia2 = new Materia("MAT1", "Matemática I", 96);
 
-personas.Add(alumno);
-personas.Add(profesor);
-personas.Add(preceptor);
+exportables.Add(alumnoExport);
+exportables.Add(profesorExport);
+exportables.Add(materia1);
+exportables.Add(materia2);
 
-foreach (Persona persona in personas)
+foreach (IExportable item in exportables)
 {
-    Console.WriteLine(persona.Presentarse());
+    Console.WriteLine(item.ExportarLinea());
 }
