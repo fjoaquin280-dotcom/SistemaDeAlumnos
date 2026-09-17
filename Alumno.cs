@@ -4,18 +4,16 @@ using System.Text;
 
 namespace SistemaDeAlumnos
 {
-    public class Alumno
+    public class Alumno : Persona
     {
-        public string Nombre { get; set; }
-        public int Legajo { get; private set; }
         public double Nota1 { get; private set; }
         public double Nota2 { get; private set; }
 
         public Alumno(string nombre, int legajo)
+            : base(nombre, legajo)
         {
-            Nombre = nombre;
-            Legajo = legajo;
         }
+
         public double Promedio()
         {
             return (Nota1 + Nota2) / 2;
