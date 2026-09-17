@@ -36,5 +36,10 @@ namespace SistemaDeAlumnos
             if (Nota2 < 10)
                 Nota2++;
         }
+
+        public override string ToString()
+        {
+            return $"{Legajo} - {Nombre} (promedio: {Promedio()})";
+        }
     }
 }

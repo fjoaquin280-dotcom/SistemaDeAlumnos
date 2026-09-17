@@ -20,7 +20,11 @@ Console.WriteLine($"{alumno1.Nombre} aprobado: {alumno1.EstaAprobado()}");
 Console.WriteLine($"{alumno2.Nombre} aprobado: {alumno2.EstaAprobado()}");
 
 alumno1.SubirNota();
+alumno2.SubirNota();
 
 Console.WriteLine("Después de subir la nota:");
 Console.WriteLine($"{alumno1.Nombre}: {alumno1.Promedio()}");
 Console.WriteLine($"{alumno2.Nombre}: {alumno2.Promedio()}");
+
+Console.WriteLine(alumno1);
+Console.WriteLine(alumno2);
