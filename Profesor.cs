@@ -2,9 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sistemaDeAlumnos
+namespace SistemaDeAlumnos
 {
-    internal class Class1
+    public class Profesor : Persona
     {
+        public string Materia { get; set; }
+
+        public Profesor(string nombre, int legajo, string materia)
+            : base(nombre, legajo)
+        {
+            Materia = materia;
+        }
+        public override string Presentarse()
+        {
+            return $"Hola, soy {Nombre} y dicto {Materia}.";
+        }
     }
 }

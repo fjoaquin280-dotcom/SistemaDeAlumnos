@@ -52,5 +52,9 @@ namespace SistemaDeAlumnos
 
             return true;
         }
+        public override string Presentarse()
+        {
+            return $"Hola, soy {Nombre}, alumno con legajo {Legajo}.";
+        }
     }
 }

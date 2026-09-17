@@ -72,17 +72,18 @@ do
             Console.Write("Nota 2: ");
             double nota2 = double.Parse(Console.ReadLine());
 
-            Alumno alumno = new Alumno(nombre, legajo);
+            Alumno nuevoAlumno = new Alumno(nombre, legajo);
 
-            if (alumno.CargarNotas(nota1, nota2))
+            if (nuevoAlumno.CargarNotas(nota1, nota2))
             {
-                alumnos.Add(alumno);
+                alumnos.Add(nuevoAlumno);
                 Console.WriteLine("Alumno agregado.");
             }
             else
             {
                 Console.WriteLine("Notas inválidas.");
             }
+
             break;
         case 2:
 
@@ -157,3 +158,21 @@ do
     }
 
 } while (opcion != 6);
+
+List<Persona> personas = new List<Persona>();
+
+Alumno alumno = new Alumno("Ana Perez", 1234);
+alumno.CargarNotas(8, 9);
+
+Profesor profesor = new Profesor("Marta Diaz", 5678, "Programacion");
+
+Preceptor preceptor = new Preceptor("Carlos Gomez", 9999);
+
+personas.Add(alumno);
+personas.Add(profesor);
+personas.Add(preceptor);
+
+foreach (Persona persona in personas)
+{
+    Console.WriteLine(persona.Presentarse());
+}

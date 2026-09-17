@@ -14,5 +14,9 @@ namespace SistemaDeAlumnos
             Nombre = nombre;
             Legajo = legajo;
         }
+        public virtual string Presentarse()
+        {
+            return $"Hola, soy {Nombre}.";
+        }
     }
 }
