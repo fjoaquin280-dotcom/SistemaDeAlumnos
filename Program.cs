@@ -40,3 +40,120 @@ Console.WriteLine($"{alumno2.Nombre}: {alumno2.Promedio()}");
 
 Console.WriteLine(alumno1);
 Console.WriteLine(alumno2);
+
+List<Alumno> alumnos = new List<Alumno>();
+
+int opcion;
+
+do
+{
+    Console.WriteLine("\n--- MENU ---");
+    Console.WriteLine("1. Agregar alumno");
+    Console.WriteLine("2. Listar alumnos");
+    Console.WriteLine("3. Buscar alumno por legajo");
+    Console.WriteLine("4. Mostrar promedio general");
+    Console.WriteLine("5. Mostrar alumnos aprobados");
+    Console.WriteLine("6. Salir");
+
+    opcion = int.Parse(Console.ReadLine());
+    switch (opcion)
+    {
+        case 1:
+
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine();
+
+            Console.Write("Legajo: ");
+            int legajo = int.Parse(Console.ReadLine());
+
+            Console.Write("Nota 1: ");
+            double nota1 = double.Parse(Console.ReadLine());
+
+            Console.Write("Nota 2: ");
+            double nota2 = double.Parse(Console.ReadLine());
+
+            Alumno alumno = new Alumno(nombre, legajo);
+
+            if (alumno.CargarNotas(nota1, nota2))
+            {
+                alumnos.Add(alumno);
+                Console.WriteLine("Alumno agregado.");
+            }
+            else
+            {
+                Console.WriteLine("Notas inválidas.");
+            }
+            break;
+        case 2:
+
+            foreach (Alumno a in alumnos)
+            {
+                Console.WriteLine(a);
+            }
+            break;
+
+        case 3:
+
+            Console.Write("Legajo a buscar: ");
+            int legajoBuscado = int.Parse(Console.ReadLine());
+
+            bool encontrado = false;
+
+            foreach (Alumno a in alumnos)
+            {
+                if (a.Legajo == legajoBuscado)
+                {
+                    Console.WriteLine(a);
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado)
+            {
+                Console.WriteLine("Alumno no encontrado.");
+            }
+            break;
+
+        case 4:
+
+            if (alumnos.Count == 0)
+            {
+                Console.WriteLine("No hay alumnos.");
+            }
+            else
+            {
+                double suma = 0;
+
+                foreach (Alumno a in alumnos)
+                {
+                    suma += a.Promedio();
+                }
+
+                Console.WriteLine($"Promedio general: {suma / alumnos.Count}");
+            }
+            break;
+
+        case 5:
+
+            int aprobados = 0;
+
+            foreach (Alumno a in alumnos)
+            {
+                if (a.EstaAprobado())
+                {
+                    aprobados++;
+                }
+            }
+
+            Console.WriteLine($"Aprobados: {aprobados}");
+            break;
+
+        default:
+
+            Console.WriteLine("Opción inválida.");
+
+            break;
+
+    }
+
+} while (opcion != 6);
