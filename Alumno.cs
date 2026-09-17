@@ -7,16 +7,14 @@ namespace SistemaDeAlumnos
     public class Alumno
     {
         public string Nombre { get; set; }
-        public int Legajo { get; set; }
-        public double Nota1 { get; set; }
-        public double Nota2 { get; set; }
+        public int Legajo { get; private set; }
+        public double Nota1 { get; private set; }
+        public double Nota2 { get; private set; }
 
-        public Alumno(string nombre, int legajo, double nota1, double nota2)
+        public Alumno(string nombre, int legajo)
         {
             Nombre = nombre;
             Legajo = legajo;
-            Nota1 = nota1;
-            Nota2 = nota2;
         }
         public double Promedio()
         {
@@ -40,6 +38,21 @@ namespace SistemaDeAlumnos
         public override string ToString()
         {
             return $"{Legajo} - {Nombre} (promedio: {Promedio()})";
+        }
+        //Al quitar override, el compilador indica que ToString() oculta un método heredado de Object.
+        //La palabra override sirve para reemplazar correctamente el método heredado.
+
+        public bool CargarNotas(double nota1, double nota2)
+        {
+            if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10)
+            {
+                return false;
+            }
+
+            Nota1 = nota1;
+            Nota2 = nota2;
+
+            return true;
         }
     }
 }

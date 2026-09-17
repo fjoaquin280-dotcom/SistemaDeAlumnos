@@ -1,8 +1,20 @@
 ﻿using SistemaDeAlumnos;
 
-Alumno alumno1 = new Alumno("Joaquin", 123, 8.5, 7.0);
+Alumno alumno1 = new Alumno("Joaquin", 123);
+Alumno alumno2 = new Alumno("Sofia", 456);
 
-Alumno alumno2 = new Alumno("Sofia", 456, 4.0, 5.0);
+if (!alumno1.CargarNotas(8.5, 7.0))
+{
+    Console.WriteLine("Notas inválidas para Joaquin");
+}
+
+if (!alumno2.CargarNotas(4.0, 5.0))
+{
+    Console.WriteLine("Notas inválidas para Sofia");
+}
+//alumno1.Nota1 = 47;
+// CS0272
+//La propiedad o el indizador 'Alumno.Nota1' no se pueden usar en este contexto porque el descriptor de acceso set es inaccesible
 
 //Alumno alumno3 = new Alumno();
 
